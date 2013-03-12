@@ -4,10 +4,13 @@
 
 static void bso_init(void);
 
-module_info_t info_textconfig = {
+module_info_t info_bso = {
     .version	= "0.1.12",
     .type	= "db",
-    .init	= textconfig_init,
+    .init	= bso_init,
     .param	= NULL,
     .next	= NULL
 };
+
+static void bso_init(void){
+}
