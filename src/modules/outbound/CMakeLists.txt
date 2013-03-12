@@ -1,1 +1,3 @@
-add_subdirectory(bso)
+if (ENABLE_BSO)
+    add_subdirectory(bso)
+endif()

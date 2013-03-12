@@ -1,6 +1,7 @@
 #include "../../../core/modules.h"
 #include "../../../core/hooks.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <libconfig.h>
 
@@ -54,7 +55,7 @@ static guint get_param_hh(const gchar *hookname, hk_arg_t *args,
 	    printf("error\n\n\n");
 	}
 	args[0].value=tt;
-
+	
     }
     else 
     {
@@ -71,6 +72,7 @@ static void textconfig_init(void)
      {
         printf("err %s:%d - %s\n",config_error_file(&cfg),config_error_line(&cfg), config_error_text(&cfg));
         config_destroy(&cfg);
+        exit(0);
      }
 //    printf("myini \n");
 }

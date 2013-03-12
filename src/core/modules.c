@@ -31,6 +31,8 @@ const gchar *module_load(const gchar *arg, const gchar *param)
 {
     GModule       *mod;
     module_info_t *info;
+    
+    printf("Loading %s...",arg);
 
     gchar *path = g_module_build_path("../lib/amail/", arg);
     mod = g_module_open(path, G_MODULE_BIND_LAZY);
@@ -79,7 +81,7 @@ const gchar *module_load(const gchar *arg, const gchar *param)
     if (info && info->init)
 	info->init();
 
-    printf("Loaded module %s.\n", arg);
+    printf("Loaded\n");
     return NULL;
 }
 const gchar *module_unload(const gchar *arg)
