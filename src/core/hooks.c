@@ -51,7 +51,7 @@ guint hk_add_handler(hk_handler_t handler, const gchar *hookname,
 	hqueue = _new_hook_queue(hookname);
     if (!hqueue)
       return 0;
-    *hqueue = g_slist_insert(*hqueue, h,0);
+    *hqueue = g_slist_insert(*hqueue, h,-1);
     return h->hid;
 }
 guint hk_run_handlers(const gchar *hookname, hk_arg_t *args)

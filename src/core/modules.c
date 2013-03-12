@@ -19,10 +19,12 @@ static gint module_list_comparator(gconstpointer arg1, gconstpointer arg2)
 void modules_init(void)
 {
     module_load("textconfig",NULL);
+    module_load("bso",NULL);
 }
 void modules_deinit(void)
 {
     module_unload("textconfig");
+    module_unload("bso");
 }
 
 const gchar *module_load(const gchar *arg, const gchar *param)
@@ -30,7 +32,7 @@ const gchar *module_load(const gchar *arg, const gchar *param)
     GModule       *mod;
     module_info_t *info;
 
-    gchar *path = g_module_build_path("../modules/db/textconfig", arg);
+    gchar *path = g_module_build_path("../lib/amail/", arg);
     mod = g_module_open(path, G_MODULE_BIND_LAZY);
     g_free(path);
     if (!mod)
