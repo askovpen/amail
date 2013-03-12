@@ -10,7 +10,7 @@ gchar *asodir;
 
 module_info_t info_aso = {
     .version	= "0.1.12",
-    .type	= "outbiund",
+    .type	= "outbound",
     .init	= aso_init,
     .param	= NULL,
     .next	= NULL
