@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 2.8)
+project(amail C)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GLIB REQUIRED glib-2.0 gmodule-2.0)
+include_directories(SYSTEM ${GLIB_INCLUDE_DIRS})
+link_directories(${GLIB_LIBRARY_DIRS})
+ADD_DEFINITIONS(-ggdb)
+ADD_DEFINITIONS(-Wall)
+
+add_subdirectory(src)
