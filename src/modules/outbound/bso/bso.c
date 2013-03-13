@@ -1,5 +1,6 @@
 #include "../../../core/modules.h"
 #include "../../../core/hooks.h"
+#include "../../../core/common.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -38,6 +39,10 @@ static void bso_init(void){
 static void bso_refresh(void){
     DIR *dir;
     struct dirent *dirent;
+    s_faddr addr;
+
+    memset(&addr,'\0',sizeof(s_faddr));
+//    printf("scan bso...");
     if( (dir=opendir(bsodir)) == NULL )
 
     {
@@ -56,11 +61,15 @@ static void bso_refresh(void){
 		( strncasecmp(dirent->d_name+8, ".REQ", 4) != 0) &&
 		( strncasecmp(dirent->d_name+10,  "UT", 2) != 0) &&
 		( strncasecmp(dirent->d_name+10,  "LO", 2) != 0) ) continue;
-	    printf("file: %s\n",dirent->d_name);
+		
+		sscanf(dirent->d_name, "%04x%04x", &addr.net, &addr.node);
+		printf("file: %s/%s 2:%d/%d.0\n",bsodir,dirent->d_name,addr.net, addr.node);
 //	    if( point == 0 && strncasecmp(dirent->d_name+8, ".PNT", 4) == 0 )
 //	    {
 //		printf("scan_dir: BSO: found point directory \"%s\"",dirent->d_name);
 //	    }
 	}
     }
+//    printf("done\n");
+
 }
